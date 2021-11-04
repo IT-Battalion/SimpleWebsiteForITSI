@@ -6,11 +6,12 @@
                 <img src="{{asset('assets/img/logo.jpg')}}" alt="logo.jpg"/>
             </div>
             <form method="post">
+                @csrf
                 <div class="form-outline mb-3">
                     <label class="form-label" for="username">{{ __('form.username.name') }}</label>
                     <input type="text" name="username" id="username"
                            class="form-control form-control-lg bg-transparent border-secondary"
-                           placeholder="{{__('form.username.placeholder')}}" pattern="[a-zA-Z0-9]" required/>
+                           placeholder="{{__('form.username.placeholder')}}" pattern="[a-zA-Z0-9]{}" required/>
                 </div>
 
                 <div class="form-outline mb-3">

@@ -34,6 +34,11 @@
                            placeholder="{{__('form.password.repeat_placeholder')}}" minlength="8" required/>
                 </div>
 
+                <div class="form-outline mb-3">
+                    <label class="form-label" for="color">{{__('form.color.name')}}</label>
+                    <input id="color" name="color" value="000000" class="form-control form-control-lg bg-transparent border-secondary" data-jscolor="{preset:'large dark', position:'right'}" required>
+                </div>
+
                 <div class="text-center text-lg-center mt-4 pt-2">
                     <button type="submit" class="btn btn-primary btn-lg w-100">{{__('form.button.register')}}</button>
                     <p class="small fw-bold mt-2 pt-1 mb-0">{{__('form.sentence.already_login')}} <a

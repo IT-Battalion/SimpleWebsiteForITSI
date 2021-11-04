@@ -18,6 +18,10 @@ return [
         'repeat' => 'Repeat Password',
         'repeat_placeholder' => 'Repeat Password',
     ],
+    'color' => [
+        'name' => 'Color',
+        'placeholder' => 'Select a Color',
+    ],
     'button' => [
       'login' => 'Login',
         'register' => 'Register',

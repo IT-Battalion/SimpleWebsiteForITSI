@@ -7,12 +7,38 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{config()->get('app.name') | \Illuminate\Support\Facades\Route::currentRouteName()}}</title>
+    <title>{{config('app.name', 'Laravel') . ' | ' . \Illuminate\Support\Facades\Route::currentRouteName()}}</title>
 
     <link href="{{mix('/css/app.css')}}" rel="stylesheet" type="text/css">
-    <script href="{{mix('/js/app.js')}}" rel="script" defer></script>
+    <script href="{{mix('/js/app.js')}}" rel="script" defer>
+        $(document).ready(function () {
+                Messenger.options = {
+                    extraClasses: "messenger-fixed messenger-on-top messenger-on-right",
+                    theme: "flat",
+                    messageDefaults: {
+                        showCloseButton: true
+                    }
+                }
+
+                @if ($errors->count()  > 0)
+                    Messenger().post({
+                        message: {{$errors->first()}},
+                        type: "error"
+                    });
+                }
+                @endif
+
+                @if(isset($success))
+                Messenger().post({
+                    message: {{$success}},
+                    type: "success"
+                });
+                @endif
+            }
+        );
+    </script>
 </head>
 <body>
- @yield('content')
+@yield('content')
 </body>
 </html>

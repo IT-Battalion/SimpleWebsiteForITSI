@@ -22,6 +22,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::view('/login', 'auth/login')->name('login');
 Route::post('/login', [AuthenticationController::class, 'login']);
-Route::view('/register', 'auth/register');
+Route::view('/register', 'auth/register')->name('register');
 Route::post('/register', [AuthenticationController::class, 'register']);
 Route::post('/logout', [AuthenticationController::class, 'logout']);
+Route::view('/admin', 'admin')->name('admin');
