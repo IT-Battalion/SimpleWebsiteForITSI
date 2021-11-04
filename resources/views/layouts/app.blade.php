@@ -13,6 +13,6 @@
     <script href="{{mix('/js/app.js')}}" rel="script" defer></script>
 </head>
 <body>
- @yield('content)
+ @yield('content')
 </body>
 </html>

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 // All protected routes
 Route::middleware(['auth'])->group(function () {
-    Route::view('/', 'dashboard', ['user' => Auth::user()])->name('home');
+    Route::view('/', 'dashboard', ['user' => Auth::user()])->name('dashboard');
 });
 
 Route::view('/login', 'auth/login')->name('login');
