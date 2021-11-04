@@ -22,6 +22,10 @@ return [
         'name' => 'Color',
         'placeholder' => 'Select a Color',
     ],
+    'date' => [
+        'name' => 'Created At',
+        'placeholder' => null,
+    ],
     'button' => [
       'login' => 'Login',
         'register' => 'Register',
