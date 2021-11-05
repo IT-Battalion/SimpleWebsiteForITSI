@@ -12,13 +12,13 @@ class AuthenticationController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'user' => 'required|string',
-            'password' => 'required|string',
+            'username' => 'required|string|min:4',
+            'password' => 'required|string|min:8',
         ]);
 
-        $userIdentifierType = filter_var($credentials['user'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $userIdentifierType = filter_var($credentials['username'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-        if (Auth::attempt([$userIdentifierType => $credentials['user'], 'password', $credentials['password']])) {
+        if (Auth::attempt([$userIdentifierType => $credentials['username'], 'password' => $credentials['password']])) {
             $request->session()->regenerate();
 
             return redirect()->intended();
@@ -32,9 +32,13 @@ class AuthenticationController extends Controller
     public function register(Request $request)
     {
         $userData = $request->validate([
-            'username' => 'required|string|unique:users,name|min:4',
+            'username' => 'required|string|unique:users,username|min:4',
             'password' => 'required|string|min:8',
-            'color' => 'required|string',
+            'color' => array(
+                'string',
+                'regex:/^#[a-zA-Z0-9]{6}$/',
+                'required',
+            ),
             'email' => 'required|email|unique:users,email',
         ]);
 
@@ -56,6 +60,6 @@ class AuthenticationController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 }

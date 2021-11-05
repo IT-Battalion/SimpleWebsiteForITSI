@@ -7,11 +7,14 @@
             </div>
             <form method="post">
                 @csrf
+                @if ($errors->any())
+                    {!! implode('', $errors->all('<div class="alert alert-primary" role="alert">:message</div>')) !!}
+                @endif
                 <div class="form-outline mb-3">
                     <label class="form-label" for="username">{{ __('form.username.name') }}</label>
                     <input type="text" name="username" id="username"
                            class="form-control form-control-lg bg-transparent border-secondary"
-                           placeholder="{{__('form.username.placeholder')}}" pattern="[a-zA-Z0-9]{}" required/>
+                           placeholder="{{__('form.username.placeholder')}}" required/>
                 </div>
 
                 <div class="form-outline mb-3">

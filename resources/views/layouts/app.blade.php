@@ -35,10 +35,40 @@
                 });
                 @endif
             }
-        );
+        )
     </script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ route('dashboard') }}">ColorLife</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @if (auth()->check())
+                <li class="nav-item">
+                    <a class="nav-link @if (request()->is('/')) active @endif" aria-current="page" href="{{ route('dashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-primary @if (request()->is('/color')) active @endif" aria-current="page" href="/color">Set Color</a>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();console.log(this);this.parentElement.submit()">Logout</a>
+                    </form>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link @if (request()->is(route('login'))) active @endif" href="{{ route('login') }}">{{ __('form.button.login') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-primary @if (request()->is(route('register'))) active @endif" href="{{ route('register') }}">{{ __('form.button.register') }}</a>
+                </li>
+                @endif
+            </ul>
+        </div>
+    </div>
+</nav>
 @yield('content')
 </body>
 </html>

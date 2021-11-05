@@ -24,10 +24,14 @@
                            placeholder="{{__('form.date.placeholder')}}" value="{{auth()->user()->created_at ?? 'null'}}" disabled/>
                 </div>
 
-                <div class="form-outline mb-3">
-                    <label class="form-label" for="color">{{__('form.color.name')}}</label>
-                    <input id="color" name="color" value="{{auth()->user()->color ?? 'null'}}" class="form-control form-control-lg bg-transparent border-secondary" data-jscolor="{preset:'large dark', position:'right'}" disabled>
-                </div>
+                <a href="/color" class="text-decoration-none text-light">
+                    <div class="form-outline mb-3">
+                        <label class="form-label" for="color">{{__('form.color.name')}}</label>
+                        <input id="color" name="color" value="{{auth()->user()->color ?? 'null'}}" class="form-control form-control-lg bg-transparent border-secondary" data-jscolor="{preset:'large dark', position:'right'}" disabled>
+                        <span class="link-primary">Farbe bearbeiten</span>
+                        <div class="m-auto mt-4" style="background-color: {{ auth()->user()->color }};width:50px;height:50px"></div>
+                    </div>
+                </a>
             </form>
         </div>
     </section>

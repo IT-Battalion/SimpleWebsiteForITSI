@@ -30,4 +30,7 @@ return [
       'login' => 'Login',
         'register' => 'Register',
     ],
+    'colorSubmit' => [
+        'name' => 'Farbe speichern'
+    ]
 ];
